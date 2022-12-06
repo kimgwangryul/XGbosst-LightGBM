@@ -1,0 +1,70 @@
+# 기본 라이브러리 import
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import matplotlib
+
+# !pip install statistics
+import statistics 
+
+----------------------------------------------------------
+
+# Data 경로 및 불러오기
+
+import os
+os.getcwd()
+
+PATH = os.getcwd() + "/Practice/현업_6월분석코드/santander-customer-satisfaction/"
+cust_df = pd.read_csv(PATH + "train_santander.csv")
+
+----------------------------------------------------------
+
+# 전처리 전 EDA : pandas_profiling
+
+# !pip install pandas_profiling
+import pandas_profiling
+cust_df.profile_report()
+
+----------------------------------------------------------
+
+# OutLier 탐지 및 최빈값대체
+
+mode_var3 = statistics.mode(cust_df['var3'])
+cust_df['var3'].replace(-999999, mode_var3, inplace=True)
+cust_df['var3'].value_counts()
+
+----------------------------------------------------------
+
+# 필요없는 칼럼 drop, X_train, y_train(label) 데이터 분리
+try :
+    cust_df.drop('ID', axis=1, inplace=True)
+except:
+    pass
+
+X_features = cust_df.iloc[:,:-1]
+y_labels = cust_df.iloc[:,-1]
+
+----------------------------------------------------------
+
+
+----------------------------------------------------------
+
+
+----------------------------------------------------------
+
+
+----------------------------------------------------------
+
+
+----------------------------------------------------------
+
+
+----------------------------------------------------------
+
+
+----------------------------------------------------------
+
+
+----------------------------------------------------------
+
